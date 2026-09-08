@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
+
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                echo 'Building the application...'
                 sh 'echo Build successful'
             }
         }
@@ -15,14 +16,21 @@ pipeline {
                 sh 'echo Tests passed'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                sh 'echo Deployment successful'
+            }
+        }
     }
 
     post {
         success {
-            echo 'CI/CD Pipeline completed successfully!'
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline failed!'
         }
     }
 }
